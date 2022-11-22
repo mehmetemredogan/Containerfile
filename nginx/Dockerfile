@@ -94,6 +94,10 @@ RUN cd /tmp && rm -rf nginx* ngx* openssl* pcre* zlib* headers*
 
 RUN dnf groupremove -y 'Development Tools'
 
+RUN ln -s /usr/lib64/nginx/modules /etc/nginx/modules
+RUN mkdir -p /var/cache/nginx/client_temp /var/cache/nginx/fastcgi_temp /var/cache/nginx/proxy_temp /var/cache/nginx/scgi_temp /var/cache/nginx/uwsgi_temp && chmod 700 /var/cache/nginx/* && chown nginx:root /var/cache/nginx/*
+RUN mkdir -p /var/cache/nginx && nginx -t
+
 EXPOSE 80
 EXPOSE 443
 
