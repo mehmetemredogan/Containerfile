@@ -2,13 +2,14 @@ FROM docker.io/rockylinux:9.0
 
 LABEL maintainer=med@mehmetemredogan.com.tr
 
-ENV NGINX_VERSION 1.23.2
+ENV NGINX_VERSION 1.25.1
 ENV PCRE_VERSION 8.45
 ENV ZLIB_VERSION 1.2.13
-ENV OPENSSL_VERSION 3.0.7
+ENV OPENSSL_VERSION 3.0.8
 
-# .pem file
-COPY serviceCert.pem /etc/pki/tls/certs/
+# .pem files
+COPY service.pem /etc/pki/tls/certs/
+COPY service-key.pem /etc/pki/tls/certs/
 
 RUN dnf update -y --setopt=install_weak_deps=False
 
