@@ -5,7 +5,7 @@ LABEL maintainer=med@mehmetemredogan.com.tr
 ARG SSH_PRIVATE_KEY
 
 ENV PATH /usr/local/go/bin:/root/go/bin:$PATH
-ENV GOLANG_VERSION 1.20.6
+ENV GOLANG_VERSION 1.21.0
 ENV GOROOT=/usr/local/go
 ENV GODIR=/usr/local/go
 ENV GOEXEC=/usr/local/go/bin/go
@@ -42,4 +42,4 @@ RUN perl -i -pe 'BEGIN{undef $/;} s/END*[\r\n]*OPENSSH*[\r\n]*PRIVATE*[\r\n]*KEY
 RUN touch ~/.ssh/known_hosts
 RUN ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-# Build => docker build --build-arg SSH_PRIVATE_KEY="$(cat ~/.ssh/id_ed25519)" -t go:1.20.6 .
+# Build => docker build --build-arg SSH_PRIVATE_KEY="$(cat ~/.ssh/id_ed25519)" -t go:1.21.0 .
